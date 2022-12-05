@@ -16,7 +16,7 @@ jobs:
         HEROKU_API_KEY: ${{ secrets.HerokuApiToken }}
       run: heroku container:login
     - name: Build "release" image
-      run: docker buildx build -t registry.heroku.com/intercode/web
+      run: docker buildx build -t registry.heroku.com/${{ secrets.HerokuAppName }}/web
         --build-arg LISTMONK_TAG=v2.3.0
         --push
         .
