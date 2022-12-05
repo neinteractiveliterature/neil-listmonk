@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  heroku-release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Heroku CLI
+      run: curl https://cli-assets.heroku.com/install.sh | sh
+    - name: Log into Heroku Container Registry
+      env:
+        HEROKU_API_KEY: ${{ secrets.HerokuApiToken }}
+      run: heroku container:login
+    - name: Build "release" image
+      run: docker buildx build -t registry.heroku.com/intercode/web
+        --build-arg LISTMONK_TAG=v2.3.0
+        --push
+        .
+    - name: Release app to Heroku
+      env:
+        HEROKU_API_KEY: ${{ secrets.HerokuApiToken }}
+      run: heroku container:release -a ${{ secrets.HerokuAppName }} web
