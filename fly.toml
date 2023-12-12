@@ -6,6 +6,7 @@
 app = "neil-listmonk"
 console_command = "/bin/sh"
 primary_region = "iad"
+swap_size_mb = 512
 
 [build]
 image = "listmonk/listmonk:v2.5.1"
