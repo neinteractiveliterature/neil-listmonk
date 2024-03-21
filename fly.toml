@@ -9,7 +9,7 @@ primary_region = "iad"
 swap_size_mb = 512
 
 [build]
-image = "listmonk/listmonk:v2.5.1"
+image = "listmonk/listmonk:v3.0.0"
 
 [env]
 LISTMONK_app__address = "0.0.0.0:8080"
