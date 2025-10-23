@@ -9,7 +9,7 @@ primary_region = "iad"
 swap_size_mb = 512
 
 [build]
-image = "listmonk/listmonk:v4.1.0"
+image = "listmonk/listmonk:v5.1.0"
 
 [deploy]
 release_command = "./listmonk --upgrade --yes"
